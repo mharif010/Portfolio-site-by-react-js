@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./mharif.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="mh Arif is a full stack web developer in Bangladesh. I can do make any kinds of web application. I am using web technologies are js, php, wordpress, react etc"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+
+    <title>mh Arif - Full Stack Web Developer in Bangladesh</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script>
+      
+      
+      /* Please ❤ this if you like it! */
+      
+      (function ($) {
+        "use strict";
+      
+        $(function () {
+          var header = $(".start-style");
+          $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+      
+            if (scroll >= 10) {
+              header.removeClass("start-style").addClass("scroll-on");
+            } else {
+              header.removeClass("scroll-on").addClass("start-style");
+            }
+          });
+        });
+      
+        //Animation
+      
+        $(document).ready(function () {
+          $("body.hero-anime").removeClass("hero-anime");
+        });
+      
+        //Menu On Hover
+      
+        $("body").on("mouseenter mouseleave", ".nav-item", function (e) {
+          if ($(window).width() > 750) {
+            var _d = $(e.target).closest(".nav-item");
+            _d.addClass("show");
+            setTimeout(function () {
+              _d[_d.is(":hover") ? "addClass" : "removeClass"]("show");
+            }, 1);
+          }
+        });
+      
+       
+      })(jquery);
+      
+ 
+    </script>
+    <script>
+      /**
+ * Defines the bootstrap tabs handler.
+ *
+ * @param {string} element
+ *  Element.
+ */
+var tabsActions = function (element) {
+  this.element = $(element);
+
+  this.setup = function () {
+    if (this.element.length <= 0) {
+      return;
+    }
+    this.init();
+    // Update after resize window.
+    var resizeId = null;
+    $(window).resize(function () {
+      clearTimeout(resizeId);
+      resizeId = setTimeout(() => {this.init()}, 50);
+    }.bind(this));
+  };
+  
+  this.init = function () {
+ 
+    // Add class to overflow items.
+    this.actionOverflowItems();
+    var tabs_overflow = this.element.find('.overflow-tab');
+ 
+    // Build overflow action tab element.
+    if (tabs_overflow.length > 0) {
+      if (!this.element.find('.overflow-tab-action').length) {
+        var tab_link = $('<a>')
+          .addClass('nav-link')
+          .attr('href', '#')
+          .attr('data-toggle', 'dropdown')
+          .text('...')
+          .on('click', function (e) {
+            e.preventDefault();
+            $(this).parents('.nav.nav-tabs').children('.nav-item.overflow-tab').toggle();
+          });
+
+        var overflow_tab_action = $('<li>')
+          .addClass('nav-item')
+          .addClass('overflow-tab-action')
+          .append(tab_link);
+
+        // Add hide to overflow tabs when click on any tab.
+        this.element.find('.nav-link').on('click', function (e) {
+          $(this).parents('.nav.nav-tabs').children('.nav-item.overflow-tab').hide();
+        });
+        this.element.append(overflow_tab_action);
+      }
+      
+      this.openOverflowDropdown();
+    }
+    else {
+      this.element.find('.overflow-tab-action').remove();
+    }
+ };
+ 
+  this.openOverflowDropdown = function () {
+    var overflow_sum_height = 0;
+    var overflow_first_top = 41;
+    
+    this.element.find('.overflow-tab').hide();
+    // Calc top position of overflow tabs.
+    this.element.find('.overflow-tab').each(function () {
+      var overflow_item_height = $(this).height() - 1;
+      if (overflow_sum_height === 0) {
+        $(this).css('top', overflow_first_top + 'px');
+        overflow_sum_height += overflow_first_top + overflow_item_height;
+      }
+      else {
+        $(this).css('top', overflow_sum_height + 'px');
+        overflow_sum_height += overflow_item_height;
+      }
+
+    });
+  };
+
+  this.actionOverflowItems = function () {
+    var tabs_limit = this.element.width() - 100;
+    var count = 0;
+    
+    // Calc tans width and add class to any tab that is overflow.
+    for (var i = 0; i < this.element.children().length; i += 1) {
+      var item = $(this.element.children()[i]);
+      if (item.hasClass('overflow-tab-action')) {
+        continue;
+      }
+      
+      count += item.width();
+      if (count > tabs_limit) {
+        item.addClass('overflow-tab');
+      }
+      else if (count < tabs_limit) {
+        item.removeClass('overflow-tab');
+        item.show();
+      }
+    }
+  };
+};
+
+var tabsAction = new tabsActions('.layout--tabs .nav-tabs-wrapper .nav-tabs');
+tabsAction.setup();
+
+    </script>
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
